@@ -4,7 +4,7 @@ const renderDates = () => {
 
     getWeather();
 
-    date.setDate(1);
+    //date.setDate(1);
     let day = date.getDay();
     let today = new Date();
     let endDate = new Date(
