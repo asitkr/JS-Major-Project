@@ -145,7 +145,7 @@ function showEvents() {
         for (let i in arr) {
 
             evList += `
-            <li style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 4px 0; overflow: hidden;">${arr[i]} &nbsp;&nbsp;&nbsp; <span class="fa-solid fa-trash" style="cursor: pointer;" onclick="confirmation(${i})"> </span></li>`;
+            <li style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 4px 0;">${arr[i]} &nbsp;&nbsp;&nbsp; <span class="fa-solid fa-trash" style="cursor: pointer;" onclick="confirmation(${i})"> </span></li>`;
         }
         document.getElementById('evList').innerHTML = evList;
     }
