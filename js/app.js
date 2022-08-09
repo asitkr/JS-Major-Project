@@ -4,7 +4,7 @@ const renderDates = () => {
 
     getWeather();
 
-    //date.setDate(1);
+    date.setDate(1);
     let day = date.getDay();
     let today = new Date();
     let endDate = new Date(
@@ -35,7 +35,12 @@ const renderDates = () => {
     ]
 
     document.getElementById("month").innerHTML = months[date.getMonth()];
-    document.getElementById("month-date").innerHTML = date.toDateString();
+
+    let weeks = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    weeks[new Date().getDay()];
+    let dt = new Date().getDate();
+    let fullYear = new Date().getFullYear();
+    document.getElementById("month-date").innerHTML = weeks[new Date().getDay()] + " , " + " " + dt + " " + " "+ fullYear;
 
     let cells = "";
     for (x = day; x > 0; x--) {
@@ -99,10 +104,13 @@ const getWeather = () => {
     }
 
     function error() {
-        location.innerHTML = "Unable to retrieve your location";
+        document.getElementById('lctn').style.visibility = "hidden";
+        document.getElementById('temptr').style.visibility = "hidden";
+        location.innerHTML = "";
     }
 }
 
+let time = document.getElementById("time");
 
 // Getting time
 const getTime = () => {
@@ -139,13 +147,13 @@ function confirmation(delId) {
 function showEvents() {
 
     let arr = getLocalStrgArrData();
-    // console.log(arr + " no");
+
     if (arr != null) {
         let evList = "";
         for (let i in arr) {
 
             evList += `
-            <li style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 4px 0; overflow: hidden;">${arr[i]} &nbsp;&nbsp;&nbsp; <span class="fa-solid fa-trash" style="cursor: pointer;" onclick="confirmation(${i})"> </span></li>`;
+            <li style="word-break: break-all; font-size: 1em; width: 100%; display: flex; justify-content: center; align-items: center; padding: 4px 0; overflow: hidden;">${arr[i]} &nbsp;&nbsp;&nbsp; <span class="fa-solid fa-trash" style="cursor: pointer;" onclick="confirmation(${i})"> </span></li>`;
         }
         document.getElementById('evList').innerHTML = evList;
     }
