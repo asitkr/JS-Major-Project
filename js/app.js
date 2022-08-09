@@ -4,7 +4,7 @@ const renderDates = () => {
 
     getWeather();
 
-    //date.setDate(1);
+    date.setDate(1);
     let day = date.getDay();
     let today = new Date();
     let endDate = new Date(
@@ -35,7 +35,12 @@ const renderDates = () => {
     ]
 
     document.getElementById("month").innerHTML = months[date.getMonth()];
-    document.getElementById("month-date").innerHTML = date.toDateString();
+    
+    let weeks = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    weeks[new Date().getDay()];
+    let dt = new Date().getDate();
+    let fullYear = new Date().getFullYear();
+    document.getElementById("month-date").innerHTML = weeks[new Date().getDay()] + " , " + " " + dt + " " + " "+ fullYear;
 
     let cells = "";
     for (x = day; x > 0; x--) {
@@ -99,7 +104,9 @@ const getWeather = () => {
     }
 
     function error() {
-        location.innerHTML = "Unable to retrieve your location";
+        document.getElementById('lctn').style.visibility = "hidden";
+        document.getElementById('temptr').style.visibility = "hidden";
+        location.innerHTML = "";
     }
 }
 
