@@ -153,7 +153,7 @@ function showEvents() {
         for (let i in arr) {
 
             evList += `
-            <li style="word-break: break-all; font-size: 1em; width: 100%; display: flex; justify-content: center; align-items: center; padding: 4px 0; overflow: hidden;">${arr[i]} &nbsp;&nbsp;&nbsp; <span class="fa-solid fa-trash" style="cursor: pointer;" onclick="confirmation(${i})"> </span></li>`;
+            <li style="word-break: break-all; font-size: 1em; width: 100%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #666; padding: 4px 0; ">${arr[i]} <span class="fa-solid fa-trash" style="cursor: pointer;" onclick="confirmation(${i})"> </span></li>`;
         }
         document.getElementById('evList').innerHTML = evList;
     }
@@ -162,6 +162,7 @@ function showEvents() {
 const addEvent = (cdate) => {
 
     let inputEvent = prompt("Add your event below....");
+    let time = prompt("Enter event time....Follows Time Formate: (08:08 AM/PM)");
 
     id = "";
     if (inputEvent) { // promt true
@@ -170,10 +171,12 @@ const addEvent = (cdate) => {
             if (id == '') { // Addition
 
                 date.setDate(cdate);
-                let eventDate = date.getDate();
-                let eventMonth = date.getMonth();
-                let eventYear = date.getFullYear();
-                let eventVal = eventDate + "~" + eventMonth + "~" + eventYear + "  =>  " + inputEvent;
+                // let eventDate = date.getDate();
+                // let eventMonth = date.getMonth();
+                // let eventYear = date.getFullYear();
+                // let eventVal = eventDate + "~" + eventMonth + "~" + eventYear + "  =>  " + date.toLocaleTimeString() + " " + inputEvent;
+
+                let eventVal = date.toLocaleDateString() + " / " + time + " <br> " + inputEvent;
 
                 let arr = getLocalStrgArrData();
                 if (arr == null) {
